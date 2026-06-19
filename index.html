@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>One Day | To Galib</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fefaf5;
+            font-family: 'Inter', sans-serif;
+            color: #2e2a28;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0e5db;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c2a58b;
+            border-radius: 10px;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            border-bottom: 1px solid #ffe6d5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.3px;
+        }
+
+        h2 {
+            font-size: 2.7rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: #e7b99e;
+            border-radius: 3px;
+        }
+
+        .btn-story {
+            background: #e7b99e;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            color: #2e2a28;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+            display: inline-block;
+        }
+        .btn-story:hover {
+            background: #d49c7a;
+            transform: translateY(-3px);
+        }
+
+        /* landing */
+        .landing {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(125deg, rgba(255, 238, 235, 0.92), rgba(252, 224, 220, 0.8)), 
+            url('./photos/aam.jpeg');
+            background-size: cover;
+            background-position: center 30%;
+            background-attachment: fixed;
+            border-bottom: none;
+        }
+        .landing-content {
+            backdrop-filter: blur(2px);
+            background: rgba(255, 250, 245, 0.8);
+            padding: 2.5rem 3rem;
+            border-radius: 3rem;
+            max-width: 800px;
+            margin: 1rem;
+        }
+        .friend-name {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: #7a4a2e;
+        }
+        .countdown {
+            font-size: 2rem;
+            margin: 1.5rem 0;
+            font-weight: 600;
+            background: #f6e3d4;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+        }
+
+        /* treasure boxes */
+        .treasure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .treasure-card {
+            background: #fff8f2;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid #f5e2d2;
+            text-align: center;
+        }
+        .treasure-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 28px rgba(0,0,0,0.1);
+        }
+        .treasure-card i {
+            font-size: 2.5rem;
+            color: #c28a64;
+            margin-bottom: 1rem;
+        }
+        .treasure-card h3 {
+            margin-bottom: 0.8rem;
+        }
+
+        /* Treasure reveal */
+        .treasure-reveal {
+            margin-top: 2rem;
+            background: #fffaf2;
+            border-radius: 2rem;
+            padding: 1.5rem;
+            display: none;
+            border: 1px solid #f0e0d2;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            animation: fadeSlide 0.3s ease;
+        }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .treasure-reveal-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .treasure-reveal-img {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+        .treasure-reveal-img img {
+            max-width: 100%;
+            max-height: 280px;
+            border-radius: 24px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid white;
+        }
+        .treasure-reveal-note {
+            flex: 2;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            background: #fff9f0;
+            padding: 1.2rem;
+            border-radius: 1.5rem;
+            color: #3a2c22;
+        }
+        .close-reveal {
+            background: #e7b99e;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .close-reveal:hover {
+            background: #d49c7a;
+        }
+
+        /* ========== REDESIGNED ONE DAY SECTION ========== */
+        .oneday-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0 1.5rem;
+        }
+        .oneday-card {
+            background: #fffdf9;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 15px 25px -10px rgba(0,0,0,0.08);
+            transition: transform 0.25s ease, box-shadow 0.2s;
+            border: 1px solid #f5e2d2;
+            display: flex;
+            flex-direction: column;
+        }
+        .oneday-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 30px -12px rgba(0,0,0,0.15);
+        }
+        .oneday-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #f0e2d4;
+            display: block;
+        }
+        .oneday-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+        .oneday-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            color: #5a3e2c;
+        }
+        .oneday-title i {
+            color: #e7b99e;
+            font-size: 1.3rem;
+        }
+        .oneday-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #4c3b2e;
+            margin-top: 0.5rem;
+            border-top: 1px dashed #f0e0d0;
+            padding-top: 0.8rem;
+        }
+        .oneday-tag {
+            display: inline-block;
+            background: #f6ede5;
+            border-radius: 40px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #b68562;
+            margin-top: 0.75rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* ordinary things */
+        .ordinary-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .ordinary-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        /* scrapbook gallery */
+        .scrapbook {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .scrap-item {
+            background: #fffaf5;
+            padding: 1rem 1rem 1.5rem;
+            border-radius: 28px;
+            transform: rotate(var(--rot, 0deg));
+            transition: transform 0.2s;
+            box-shadow: 0 15px 25px -8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .scrap-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 20px;
+            background: #eedbcb;
+            display: block;
+        }
+        .caption {
+            font-style: normal;
+            margin-top: 14px;
+            font-size: 1rem;
+            line-height: 1.4;
+            text-align: center;
+            color: #4a3a2e;
+            background: #fff9f2;
+            padding: 0.8rem;
+            border-radius: 18px;
+            font-weight: 500;
+        }
+        .caption i {
+            color: #c28a64;
+            margin-right: 6px;
+        }
+        .gallery-note {
+            text-align: center;
+            background: #f4ede5;
+            border-radius: 40px;
+            padding: 0.8rem;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* envelope */
+        .envelope-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .envelope {
+            background: #e3c9b1;
+            width: 220px;
+            padding: 1.2rem;
+            text-align: center;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 0 #b2815e;
+        }
+        .hidden-letter {
+            background: #fff2e6;
+            border-radius: 30px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+            display: none;
+            font-size: 1.2rem;
+            border: 1px dashed #e7b99e;
+        }
+
+        @media (max-width: 680px) {
+            h2 { font-size: 2rem; }
+            .landing-content { padding: 1.5rem; }
+            .landing {
+                background: linear-gradient(125deg, rgba(255, 245, 235, 0.9), rgba(252, 235, 220, 0.7)), 
+                url('./photos/pawmark.jpeg');
+                background-size: cover;
+            }
+            .scrapbook {
+                grid-template-columns: 1fr;
+            }
+            .scrap-item img {
+                height: 240px;
+            }
+            .treasure-reveal-inner {
+                flex-direction: column;
+            }
+            .oneday-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LANDING PAGE -->
+<section class="landing" id="landing">
+    <div class="landing-content">
+        <i class="fa-solid fa-cat" style="font-size: 3rem; color:#b68562;"></i>
+        <h1 class="friend-name">To Galib, <span id="friendNameDisplay"></span></h1>
+        <div id="birthdayCountdown" class="countdown"></div>
+        <p style="margin:1rem 0">"We still have a lot left to do. So for now, happy birthday. I'll see you on One Day." ✨</p>
+        <button class="btn-story" id="startJourneyBtn">📖 Enter our story</button>
+    </div>
+</section>
+
+<!-- SECTION: CHILDHOOD MEMORIES -->
+<section id="beginning">
+    <div class="container">
+        <h2>Chapter 1: Childhood memories</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-calendar-alt"></i> <strong>June 30, 2003</strong>
+             — It would be funny if I say that  <em>“I remember the first time I saw you”</em> , <i>lol </i> 
+               that is kinda impossible. 
+             Maybe I was around 6 months or more when that happened.</p> 
+        <p>I have a memory of Saima which I think is the oldest memory of her. We were playing together 
+            and she was asking me not to call her <em>Fupi.</em> And guess what? 
+            I still find it difficult to call her so. I wonder how do you call her <em>aunty</em> nowadays!</p><br>
+        <p>But I can't find out which one of the Childhood memories with you is the oldest. Maybe it's when 
+            we were playing in your room beside an Alna or a showcase and I was asking you "তুমি কি স্কুলে পড়? কোন ক্লাসে পড়? তোমার রোল কত?" 
+            and you were like "আমার রোল ১ 😏". And then I was like <strong><i>"He can't be that smart! He is basically a monkey
+                who is always jumping around!!"</i>
+            </strong>
+        </p>
+        <div style="margin-top: 1.5rem; background: #fff2e9; padding: 1rem; border-radius: 28px;">
+            <i class="fas fa-smile-wink"></i> <strong>Funny early memory:</strong> One of my earliest and most favourite memories would be when you and Khaled
+            bhaia were wrestling on the bed in your drawing room and I entered the room and both of you ran towards me and hugged me.
+            Ig that was the first time when I came to know that you are my cousin brother cause before that I used to think 
+            that you are my friend and fupi is basically my friend's mom!! 😆
+        </div>
+    </div>
+</section>
+
+
+
+<!-- SECTION: THINGS THAT BELONG TO US (Treasure boxes) -->
+<section>
+    <div class="container">
+        <h2>📦 Things That Belong To Us</h2>
+        <p style="margin-bottom: 1rem;">Click any treasure box — a picture and a note will appear.</p>
+        <div class="treasure-grid">
+            <!-- Each card with data-img and data-note -->
+            <div class="treasure-card" data-img="./photos/pookie.jpeg" data-note="Why are you so Pookie? Tomar chule jhuti kore dei?? Plzzzzzz... Tarpor ful diye chul decorate kore dei?? "><i class="fas fa-hand-holding-heart"></i><h3>Pookie</h3></div>
+            <div class="treasure-card" data-img="./photos/moharaj.jpeg" data-note="Moharaj Ataullah Galib! Ghoray kore shikar korte jacchen? Amake shathe niye jaben na?? "><i class="fa-solid fa-horse"></i><h3>Maharaj</h3></div>
+            <div class="treasure-card" data-img="./photos/Tishfa.jpeg" data-note="Tishfa Group of Industries. I really liked the logo. Amra business kore jokhon onk borolox hoye jabo tokhon world Tour dibo, ok? Tarpor bishal ekta Mansion kinbo, oita te swimming pool thakbe, badminton court thakbe, then ekta bishal dressing room thakbe, sheikhane onek gula Ball Gown thakbe, ek ekdin ek ekta gown porbo, Tarpor Beaty and the Beast type er ekta bishal Library thakbe, ekdom pura wall jure onek gula boi thakbe, tarpor... Ekom aro onek kisu. Okk?"><i class="fa-solid fa-mug-hot"></i><h3>Tishfa Group</h3></div>
+            <div class="treasure-card" data-img="./photos/pizza.jpeg" data-note="This was one of the best memories. Amra abar pizza banabo, ok? Aro onk kisu banabo. Cake banabo, noodles banabo, fuchka banabo, onek kisu nanna banna korbo InshaAllah."><i class="fa-solid fa-pizza-slice"></i><h3>Pizza Date</h3></div>
+            <div class="treasure-card" data-img="./photos/CarResQ.jpeg" data-note="I can never forget the amount of help I got from you during the making of CarResQ. Really very very greatful to you. This ain't the only thing I'm grateful about. I don't even wanna start, cz the list is too long! Can't believe how much dependent I became on you. I am usually someone who can't trust others with anything. It really surprised me how much relaxed I used to get after I shared my matters with you! At this point, I really find it hard to imagine my life without you."><i class="fa-solid fa-car"></i><h3>CarResQ</h3></div>
+            <div class="treasure-card" data-img="./photos/salami.jpeg" data-note="I really miss being clicked by you. Specially, the candids were always my favourite. (Even though most of them look ridiculous. Either I my nose looks weird on them, or the eyes, or the double chins, or just I look funny!)"><i class="fas fa-camera-retro"></i><h3>The Photo Shoots</h3></div>
+            <div class="treasure-card" data-img="./photos/paw.jpeg" data-note="Tomar haat eo paw eke di??"><i class="fa-solid fa-paw"></i><h3>Pawmarks</h3></div>
+            <div class="treasure-card" data-img="./photos/tree.jpeg" data-note="Abar ei pic ta recreate korba, okk? 🤭"><i class="fa-solid fa-tree"></i><h3>Tree-hug</h3></div>
+            <div class="treasure-card" data-img="./photos/bullet.jpeg" data-note="Cholo abar rubber bullet fight kori. But tumi amk bullets banay dio, okk?"><i class="fa-solid fa-gun"></i><h3>Rubber Bullet</h3></div>
+        </div>
+        <div id="treasureReveal" class="treasure-reveal">
+            <div class="treasure-reveal-inner">
+                <div class="treasure-reveal-img"><img id="revealImg" src="" alt="Treasure memory"></div>
+                <div class="treasure-reveal-note"><p id="revealNote">✨ Click on any treasure box above to see a memory ✨</p></div>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;"><button class="close-reveal" id="closeRevealBtn">Close ✖</button></div>
+        </div>
+    </div>
+</section>
+
+<!-- ✨ ONE DAY SECTION – PICTURE GALLERY ✨ -->
+<section>
+    <div class="container">
+        <h2>✈️ One Day · Picture of Our Dreams</h2>
+        <p style="margin-bottom: 1rem; font-size: 1.05rem;">Every time we said
+             <code style="background:#f0e0d2; padding:2px 6px; border-radius:40px;">OneDay</code>, I secretely 
+             prayed for that to come true. I know it's 
+            silly, but who knows which <em>InshaAllah</em> becomes acceptable to Allah!
+        </p>
+        <div class="oneday-grid">
+            <!-- Card 1: See you again -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/airport.png" alt="Welcome back" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Welcome+Back'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fa-solid fa-plane"></i> See you again</div>
+                    <div class="oneday-description">Maybe OneDay you will come back from Korea and I'll be waiting 
+                        for you in the airport. I hope that OneDay comes real soon, and I get to see you in person again!
+                    </div>
+                    <div class="oneday-tag">✨ One Day ✨</div>
+                </div>
+            </div>
+            <!-- Card 2: Walk in rain -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/rain.png" alt="Walk in rain together" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Rain+Walk'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fas fa-cloud-rain"></i> Walk in the rain together</div>
+                    <div class="oneday-description">Maybe the next time we meet, it will be raining the whole day. 
+                        Maybe we will go to the terrace and enjoy the rain together. 🌧️
+                        <br>But tumi abar jor badhay feilo na plzzz... 🥹
+                    </div>
+                    <div class="oneday-tag">⛈️ Rainy Day</div>
+                </div>
+            </div>
+            <!-- Card 3: Cook together -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/cooking.png" alt="Cooking together" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Cooking+Date'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fas fa-utensils"></i> Cook together</div>
+                    <div class="oneday-description">
+                        We still have so many new recepies to try together! I really miss cooking with you.. I hope the 
+                        day comes soon when we can have cooking dates again.. 🥹
+                    </div>
+                    <div class="oneday-tag">🔥 Chef mode ON</div>
+                </div>
+            </div>
+            <!-- Card 4: Ride & Metro -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/metro.png" alt="Metro ride adventure" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Metro+Adventure'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fas fa-motorcycle"></i> Ride & Metro adventure</div>
+                    <div class="oneday-description"> 
+                        Still waiting for the day I get to roam around with you in metro. Metro-card diye ki korbo 
+                        ami, jodi tumi-e na thako?! 
+                    </div>
+                    <div class="oneday-tag">🚇 Let's roam</div>
+                </div>
+            </div>
+            <!-- Card 5: Paint together -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/painting.png" alt="Abstract painting" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Paint+Chaos'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fas fa-palette"></i> Paint together</div>
+                    <div class="oneday-description">I am very bad at drawing but I really want to recreate those viral
+                        painting date videos with you..  🥹👉🏻👈🏻
+                    </div>
+                    <div class="oneday-tag">🎨 Color therapy</div>
+                </div>
+            </div>
+            <!-- Card 6: Clay date -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/clay.png" alt="Clay pottery" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Clay+Date'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fas fa-hand-peace"></i> Clay date </div>
+                    <div class="oneday-description">
+                        I knew you were gonna be busy, still bought those clays hoping that you would be able to 
+                        manage time someday! But soon after I bought those, I came to know that you got your Visa. 
+                        Thus it also stayed in our OneDay-list.
+                    </div>
+                    <div class="oneday-tag">🏺 Mud magic</div>
+                </div>
+            </div>
+            <!-- Card 7: PhotoShoots -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/photobooth.jpeg" alt="Photo booth silliness" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Photo+Booth'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fas fa-camera"></i> PhotoShoots</div>
+                    <div class="oneday-description"> You gotta click so many photos of me. Be ready for that!</div>
+                    <div class="oneday-tag">📸 Say cheese!</div>
+                </div>
+            </div>
+            <!-- Card 8: Beach -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/beach.png" alt="Beach" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Beach'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fas fa-umbrella-beach"></i> Visit Sea Beaches</div>
+                    <div class="oneday-description"> Crystal water, overwater villas, and endless sunset talks, OneDay..</div>
+                    <div class="oneday-tag">🌊 Paradise awaits</div>
+                </div>
+            </div>
+            <!-- Card 9: Long Drive -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/drive.png" alt="Long Drive" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Long+Drive'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fa-solid fa-road"></i> Long Drive</div>
+                    <div class="oneday-description"> We gotta go on long drives one-day, maybe in a convertible car 🤞🏻!!</div>
+                    <div class="oneday-tag">🛣️ On the Go</div>
+                </div>
+            </div>
+            <!-- Card 10: World tour -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/plane.png" alt="World tour vision" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Globe+Trot'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fas fa-globe-asia"></i> Cross every country</div>
+                    <div class="oneday-description"> 5AM at the airport, with sleepy eyes, coffee in hands, waiting for 
+                        our plane to start our world tour. Sounds like a dream! Remember to save the window seat for me &
+                        do not forget to film me!
+                    </div>
+                    <div class="oneday-tag">🌏 Manifestation tour</div>
+                </div>
+            </div>
+            <!-- Card 11: Kashmir -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/kashmir.png" alt="Kashmir" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Kashmir+Tour'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fa-solid fa-mountain"></i> Kashmir </div>
+                    <div class="oneday-description"> We gotta wear the Kashmiri Traditional dresses and drink Kashmiri
+                        noon chai (I don't think it will taste good but it looks good).
+                    </div>
+                    <div class="oneday-tag">🏔️ Kashmir dream</div>
+                </div>
+            </div>
+            <!-- Card 12: Ramen -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/ramen.png" alt="Ramen date in Korea" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Ramen+Night'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fa-solid fa-utensils"></i> Ramen Run</div>
+                    <div class="oneday-description">
+                        Keep your chopstick practice on. We gotta have Ramen together maybe in Japan/ Korea/ wherever you say. 🍜✨
+                    </div>
+                    <div class="oneday-tag">🥢 Midnight ramen</div>
+                </div>
+            </div>
+            <!-- Card 13: Sakura -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/sakura.png" alt="Sakura viewing in Japan or Korea" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Sakura+Petals'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fa-solid fa-tree"></i> Sakura Season</div>
+                    <div class="oneday-description">
+                        Walking under cherry blossoms, catching petals, and taking a thousand photos we'll never delete. Gotta have a picnic under those pink flowers. 🌸💖
+                    </div>
+                    <div class="oneday-tag">🌸 Spring forever</div>
+                </div>
+            </div>
+            <!-- Card 14: Matching Hoodie -->
+            <div class="oneday-card">
+                <img class="oneday-img" src="./oneday/hoodie.png" alt="Cozy hoodie weather" onerror="this.src='https://placehold.co/600x400/f4e0d0/7a4a2e?text=Hoodie+Weather'">
+                <div class="oneday-content">
+                    <div class="oneday-title"><i class="fa-solid fa-vest"></i> Matching Hoodie</div>
+                    <div class="oneday-description">
+                        We gotta wear matching hoodies ONeDay. Maybe I'll also steal your hoodies, they better be 
+                        oversized for me. ☕🧣
+                    </div>
+                    <div class="oneday-tag">🧥 Cozy chaos</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<!-- SECTION: ORDINARY THINGS -->
+<section>
+    <div class="container">
+        <h2>📱 Ordinary Things</h2>
+        <p style="margin-bottom: 1rem;">I know I bother you alot. 
+            But somehow you always manage to make me smile. </p>
+        <div class="ordinary-grid">
+            <div class="ordinary-card"><i class="fab fa-snapchat"></i> Random snaps</div>
+            <div class="ordinary-card"><i class="fa-brands fa-instagram"></i> Instagram Reels</div>
+            <div class="ordinary-card"><i class="fas fa-microphone-alt"></i> Long Voice notes </div>
+            <div class="ordinary-card"><i class="fas fa-comment-dots"></i> Random Texts</div>
+            <div class="ordinary-card"><i class="fas fa-eye"></i> Random looks </div>
+            <div class="ordinary-card"><i class="fas fa-laugh-beam"></i> Silly Jokes</div>
+            <div class="ordinary-card"><i class="fas fa-cloud-moon"></i> Late night tour plans</div>
+        </div>
+        <div style="background: #fff3ea; border-radius: 2rem; padding: 1.5rem; margin-top: 1rem;">
+            <p><i class="fas fa-heart" style="color:#c28a64;"></i> These small things really matters to me. I always
+            keep waiting to hear from you. I know you will get even more busy with time. But please don't 
+            forget to update me whenever you get time. </p>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION: WHAT DISTANCE COULDN'T TAKE AWAY -->
+<section>
+    <div class="container">
+        <h2>🌊 What Distance Couldn't Take Away</h2>
+        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; align-items: center; background: #e5d5c6; border-radius: 70px; padding: 2rem; margin-top: 1rem;">
+            <div style="text-align: center;">
+                <i class="fas fa-map-marker-alt" style="font-size: 2rem;"></i><br> 🇧🇩 Bangladesh
+            </div>
+            <i class="fas fa-plane" style="font-size: 2rem;"></i>
+            <div style="text-align: center;">
+                <i class="fas fa-university"></i><br> Sun Moon University, Asan, South Korea 🇰🇷
+            </div>
+        </div>
+        <p style="margin-top: 1.5rem; text-align: center; font-weight: 500;">
+             3,850 km apart, but you will still remain my favourite person forever.
+        </p>
+    </div>
+</section>
+
+
+<!-- SECTION: SCRAPBOOK -->
+<section>
+    <div class="container">
+        <h2>📸 Our Scrapbook</h2>
+        <div class="scrapbook">
+            <div class="scrap-item" style="--rot:-1deg">
+                <img src="./photos/NCJPdhaka.jpeg" alt="Memory 1">
+                <div class="caption"><i class="fas fa-map-pin"></i> I know you were very busy those days. Still you came to attend the olympiad just to make me happy! That really meant a lot to me.. 🥹</div>
+            </div>
+            <div class="scrap-item" style="--rot:1.2deg">
+                <img src="./photos/train.jpeg" alt="Memory 2">
+                <div class="caption"><i class="fas fa-chai"></i> Zootopia land niye choilo, ok? Oikhane abar ekom train e uthbo!</div>
+            </div>
+            <div class="scrap-item" style="--rot:-0.5deg">
+                <img src="./photos/hehe.jpeg" alt="Sunset message">
+                <div class="caption"><i class="fas fa-sun"></i> Hehe.. Ekom koro to abar!</div>
+            </div>
+            <div class="scrap-item" style="--rot:2deg">
+                <img src="./photos/coffee.jpeg" alt="Coffee meeting">
+                <div class="caption"><i class="fas fa-coffee"></i> 
+                    Thank You coffee banano shikhanor jonno. But tomar haater coffee khawar shopno shopnoi roye gelo!
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:-1.3deg">
+                <img src="./photos/haor.jpeg" alt="World tour plan">
+                <div class="caption"><i class="fas fa-globe-americas"></i> This was undoubtedly the best tour of my life. Thank you for arranging such a beautiful tour! 🥹</div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/ghibli.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> I think it was Shahpur. It was around the time ammu's cousin died, and abbu took us for a walk, primarily, to visit Sourav mama's grave. Secondly, you guys were also with us so I think abbu wanted to show us the village around. I kept the ghibli cz I find it cute!</div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/ghibli 2.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> Another ghibli from the same day...</div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/shahpur.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> Here is the real pic. <em>Shahpur nodir par..</em></div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/hashi.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> Babbah! Ki hashi!! Kar shathe kotha bolo dekhi...
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/facepack.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> Cholo facepack lagai ekshathe.. 
+                    Tarpor makeup koray dibo tomake..
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/Rana chachu wedding.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> Bhaiiiii.....! Ei selfie ta khujte khujte pagol 
+                    hoye gesi! Eita te ami onk weirdly pose korsilam, hotat ekdin dekhe cringe kheye gesilam. But pura 
+                    pic delete na kore tomake crop kore rekhe tarpor main pic ta delete kore disi. Erpor main pic ta eto 
+                    khujsi!! Kuttar moto khujsi! Tao pailam na. Tmk disilam ig, ager insta account theke. Thakle dio amare.
+                    Eibar delete korbo na, promise! 
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/selfie.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> 
+                    Oh baba!! Eto shundor kore selfie neya k shikhailo tomake?!!! 
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/nijhumdip.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> 
+                    Cholo watch tower er upore uthi.. Upore giye aro onk gula selfie tulbo. Okk?
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/pahar.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> 
+                    Next time aro onk upore jabo, ok? Mohaymin chachur kotha shunbo na. Upore aro onk shundor view ase fs. 
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/earbuds.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> 
+                    Tomar earbuds niye gele ki kanna korba? Ektu niye lukay rakhi? 
+                    <br>Ishmam er towel diye mukher moddhe fikka marle to earbuds lukay e rakhbo! 
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/selfie 2.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> 
+                    Bro tumi ekta jinish notice korso? Choto belar joto gula selfie ase shob selfie tumi tulso,
+                    r ekhon selfie tultei chao na! Tulleo sheita pore dite chao na!! 😤
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/Shirt.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> 
+                    Cholo abar origami banai 2 jon. Ekom shirt banay dile ki porba?? 🤭
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/umbrella.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> 
+                    Chhade niye jaba boleo ar niye gela na!! 🙂🙂
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/versity.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> 
+                    Abar ashba na amar versityr shamne cha khete? Khali to ignore e koro amake.. Kotobar bolsilam 
+                    ashte! 🥹
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/mehedi.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> 
+                    Abar mehedi diye diba na haat e? Tumi diye dao nai dikhe ei Eid e dei nai mehedi.. 🥹
+                </div>
+            </div>
+            <div class="scrap-item" style="--rot:1deg">
+                <img src="./photos/chobi.jpeg" alt="Island concept">
+                <div class="caption"><i class="fas fa-palmtree"></i> 
+                    Tomakeo onek gula chobi tule di?? <br> But tumi pore jeyo na plzz...
+                </div>
+            </div>
+            
+        </div>
+        <div class="gallery-note">
+            📸  We have so many pictures together, each and every one of those holds some memories. Still I can never have enough
+            of your pictures. Like everytime I look for our pictures together, I'm like, "That's all?!!" We'll have to click 
+            many more pictures together. Get ready for that!
+        </div>
+    </div>
+</section>
+    
+<!-- SECTION: BIRTHDAY LETTER (sealed) -->
+<section>
+    <div class="container">
+        <h2>🎂 A Letter That Waited</h2>
+        <div class="envelope-container">
+            <div class="envelope" id="sealedEnvelope">
+                <i class="fas fa-envelope-open-text" style="font-size: 2.5rem;"></i>
+                <p>💌 Open when you're ready</p>
+            </div>
+        </div>
+        <div id="birthdayLetterContent" class="hidden-letter">
+            <i class="fas fa-heart" style="color:#c45f32;"></i>
+            <p>Dear Galib,<br><br>Or should I say <em>Meowlib?</em><br><br>Another birthday, and you are not here. 
+                Last year I waited for a whole month to hand over your gift. 
+                I thought at least this year you will be here on 30th June. 
+                But the irony! I don't even know when will I see you the next-time. 
+                I really wish you were here, Or I was there with you! <br><br>Anyways, 
+                I really wish you have a wonderful life there in Korea, with me or without me. 
+                Please always take care of yourself. I know It's hard cook for yourself but you gotta keep 
+                yourself healthy and strong. <br><br> You are, without question, the best chapter of my life. 
+                And the chapter isn't ending. We've got pages left: you will have to come and 
+                take me with you, We are gonna do so many thing together <em>InshaAllah</em>.. 
+                We are gonna watch Sakura together, walk in the rain, play snow fight, cook so many dishes 
+                together, see the whole world- <em><strong>together</strong></em>! I'll see you on our OneDay 
+                and so many more days <em>InshaAllah..</em>
+                <br><br>Whenever your heart feels heavy, you can always talk to me; text me, call me, send me snap.
+                I'm always eager to hear from you. I hope we can talk face to face again very soon. 
+                <br><br>Always waiting for you 🌊 <br><br>Yours, <br><em>(You better know who I am) </em>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL PAGE -->
+<section style="border-bottom: none;">
+    <div class="container" style="text-align: center;">
+        <p style="font-size: 1.8rem; font-family: 'Playfair Display';">We still haven't ride horse together.</p>
+        <p style="font-size: 1.8rem; font-family: 'Playfair Display';">We still haven't taken that photo booth picture.</p>
+        <p style="font-size: 1.8rem; font-family: 'Playfair Display';">We still haven't went Go-kart together.</p>
+        <p style="font-size: 1.8rem; font-family: 'Playfair Display';">We still haven't seen the World together.</p>
+        <p style="font-size: 2rem; margin: 2rem 0; font-weight: bold;">We still have a lot left to do.</p>
+        <h2 style="font-size: 2.5rem;">So for now, happy birthday.</h2>
+        <p style="font-size: 1.6rem; margin-top: 1rem;"><i class="fas fa-moon"></i> I'll see you on <strong>One Day</strong>. <i class="fas fa-moon"></i></p>
+        <button id="replayStoryBtn" class="btn-story"><i class="fas fa-sync-alt"></i> Replay Our Journey</button>
+        <p style="margin-top: 2rem;"><i class="fas fa-heart" style="color:#c28a64;"></i> From Bangladesh to Asan, with all the dreams we've planted.</p>
+    </div>
+</section>
+
+<script>
+    // 1) Friend name & birthday countdown
+    const friendName = "Galib";
+    document.getElementById("friendNameDisplay").innerText = friendName;
+    const birthdayMonth = 5, birthdayDay = 30;
+    function updateCountdown() {
+        const now = new Date();
+        let currentYear = now.getFullYear();
+        let targetDate = new Date(currentYear, birthdayMonth, birthdayDay);
+        if (now > targetDate) targetDate = new Date(currentYear + 1, birthdayMonth, birthdayDay);
+        const diff = targetDate - now;
+        if (diff <= 0 && now.getMonth() === birthdayMonth && now.getDate() === birthdayDay) {
+            document.getElementById("birthdayCountdown").innerHTML = "🎂 HAPPY BIRTHDAY! 🎂";
+            return;
+        }
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        document.getElementById("birthdayCountdown").innerHTML = `🎉 Birthday Countdown: ${days}d ${hours}h 🎉`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 3600000);
+
+    // 2) Treasure reveal
+    const treasureCards = document.querySelectorAll('.treasure-card');
+    const revealDiv = document.getElementById('treasureReveal');
+    const revealImg = document.getElementById('revealImg');
+    const revealNote = document.getElementById('revealNote');
+    const closeBtn = document.getElementById('closeRevealBtn');
+
+    treasureCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const img = this.dataset.img;
+            const note = this.dataset.note;
+            if (img && note) {
+                revealImg.src = img;
+                revealNote.innerHTML = note;
+                revealDiv.style.display = 'block';
+                revealDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+    });
+
+    closeBtn.addEventListener('click', function() {
+        revealDiv.style.display = 'none';
+    });
+
+    // 3) Envelope (letter toggle)
+    const envelope = document.getElementById('sealedEnvelope');
+    const letter = document.getElementById('birthdayLetterContent');
+    let letterOpen = false;
+    envelope.addEventListener('click', function() {
+        if (!letterOpen) {
+            letter.style.display = 'block';
+            envelope.style.opacity = '0.7';
+            letterOpen = true;
+        } else {
+            letter.style.display = 'none';
+            envelope.style.opacity = '1';
+            letterOpen = false;
+        }
+    });
+
+    // 4) Navigation buttons – fixed and working
+    document.getElementById('startJourneyBtn').addEventListener('click', function() {
+        document.getElementById('beginning').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('replayStoryBtn').addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+            document.getElementById('beginning').scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+    });
+
+    // 5) Optional soft music player
+    const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3');
+    audio.loop = true;
+    audio.volume = 0.15;
+    let musicPlaying = false;
+
+    const musicBtn = document.createElement('div');
+    musicBtn.style.position = 'fixed';
+    musicBtn.style.bottom = '20px';
+    musicBtn.style.right = '20px';
+    musicBtn.style.backgroundColor = '#e7b99e';
+    musicBtn.style.borderRadius = '50px';
+    musicBtn.style.padding = '12px 18px';
+    musicBtn.style.zIndex = '999';
+    musicBtn.style.cursor = 'pointer';
+    musicBtn.style.boxShadow = '0 3px 12px rgba(0,0,0,0.2)';
+    musicBtn.innerHTML = '<i class="fas fa-music"></i> Play soft music';
+    document.body.appendChild(musicBtn);
+
+    musicBtn.addEventListener('click', function() {
+        if (!musicPlaying) {
+            audio.play().catch(() => {});
+            musicBtn.innerHTML = '<i class="fas fa-pause"></i> Pause music';
+            musicPlaying = true;
+        } else {
+            audio.pause();
+            musicBtn.innerHTML = '<i class="fas fa-music"></i> Play soft music';
+            musicPlaying = false;
+        }
+    });
+</script>
+
+</body>
+</html>
+```
