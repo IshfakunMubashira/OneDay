@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* ── Reset & Base (original) ── */
+        /* ── Reset & Base ── */
         * {
             margin: 0;
             padding: 0;
@@ -41,9 +41,7 @@
             margin: 0 auto;
         }
 
-        h1,
-        h2,
-        h3 {
+        h1, h2, h3 {
             font-family: 'Playfair Display', serif;
             letter-spacing: -0.3px;
         }
@@ -83,7 +81,7 @@
             transform: translateY(-3px);
         }
 
-        /* ── Landing (original) ── */
+        /* ── Landing ── */
         .landing {
             min-height: 100vh;
             display: flex;
@@ -127,7 +125,7 @@
             margin: 1rem 0;
         }
 
-        /* ── Treasure Grid (original) ── */
+        /* ── Treasure Grid ── */
         .treasure-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -158,7 +156,7 @@
             font-size: 1.2rem;
         }
 
-        /* ── Treasure Modal (replaces inline reveal) ── */
+        /* ── Treasure Modal ── */
         #treasureModal {
             display: none;
             position: fixed;
@@ -176,21 +174,15 @@
             display: flex;
         }
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.96);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
         }
         .modal-box {
             background: #fffaf2;
             border-radius: 2.5rem;
-            max-width: 500px;
+            max-width: 560px;
             width: 100%;
-            max-height: 90vh;
+            max-height: 95vh;
             overflow-y: auto;
             padding: 2rem 1.5rem 1.5rem;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
@@ -214,13 +206,14 @@
         }
         .modal-box img {
             width: 100%;
-            max-height: 340px;
-            object-fit: cover;
+            max-height: 500px;
+            object-fit: contain;
             border-radius: 1.5rem;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
             border: 3px solid #fff;
             display: block;
             margin-bottom: 1rem;
+            background: #f5ede5;
         }
         .modal-box .note {
             font-size: 1.1rem;
@@ -231,7 +224,7 @@
             border-radius: 1.5rem;
         }
 
-        /* ── One Day Grid (original) ── */
+        /* ── One Day Grid ── */
         .oneday-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -254,7 +247,7 @@
         }
         .oneday-img {
             width: 100%;
-            height: 220px;
+            height: 280px;
             object-fit: cover;
             background: #f0e2d4;
             display: block;
@@ -318,7 +311,7 @@
             border: 1px solid #f5e2d2;
         }
 
-        /* ── Scrapbook (original) ── */
+        /* ── Scrapbook ── */
         .scrapbook {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -336,7 +329,7 @@
         }
         .scrap-item img {
             width: 100%;
-            height: 280px;
+            height: 380px;
             object-fit: cover;
             border-radius: 20px;
             background: #eedbcb;
@@ -446,7 +439,7 @@
             font-size: 1.1rem;
         }
 
-        /* ── Responsive (original media queries) ── */
+        /* ── Responsive ── */
         @media (max-width: 680px) {
             section {
                 padding: 3rem 1.5rem;
@@ -478,6 +471,7 @@
                 padding: 12px 24px;
                 font-size: 1rem;
             }
+
             .treasure-grid {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
                 gap: 1rem;
@@ -493,12 +487,13 @@
             .treasure-card h3 {
                 font-size: 0.95rem;
             }
+
             .scrapbook {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
             .scrap-item img {
-                height: 240px;
+                height: 320px;
             }
             .scrap-item {
                 padding: 0.8rem 0.8rem 1.2rem;
@@ -507,12 +502,13 @@
                 font-size: 0.9rem;
                 padding: 0.6rem;
             }
+
             .oneday-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
             .oneday-img {
-                height: 200px;
+                height: 240px;
             }
             .oneday-title {
                 font-size: 1.3rem;
@@ -520,6 +516,7 @@
             .oneday-description {
                 font-size: 0.9rem;
             }
+
             .ordinary-grid {
                 gap: 0.8rem;
             }
@@ -527,6 +524,7 @@
                 padding: 0.6rem 1rem;
                 font-size: 0.85rem;
             }
+
             .envelope {
                 width: 180px;
                 padding: 1rem;
@@ -538,17 +536,19 @@
                 font-size: 1rem;
                 padding: 1.5rem;
             }
+
             .modal-box {
                 padding: 1.5rem 1rem;
                 border-radius: 2rem;
             }
             .modal-box img {
-                max-height: 240px;
+                max-height: 360px;
             }
             .modal-box .note {
                 font-size: 1rem;
                 padding: 0.8rem 1rem;
             }
+
             .final-text {
                 font-size: 1.4rem;
             }
@@ -579,13 +579,13 @@
                 font-size: 0.8rem;
             }
             .scrap-item img {
-                height: 200px;
+                height: 260px;
             }
             .oneday-img {
-                height: 170px;
+                height: 200px;
             }
             .modal-box img {
-                max-height: 200px;
+                max-height: 300px;
             }
         }
     </style>
